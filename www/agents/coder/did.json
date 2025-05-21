@@ -1,0 +1,40 @@
+{
+    "@context": [
+        "https://www.w3.org/ns/did/v1",
+        "https://w3id.org/security/suites/jws-2020/v1",
+        "https://iamagentic.org/ns/agentic-profile/v1"
+    ],
+    "id": "did:web:localhost:4004:agents:coder",
+    "verificationMethod": [
+        {
+            "id": "#identity-key",
+            "type": "JsonWebKey2020",
+            "publicKeyJwk": {
+                "kty": "OKP",
+                "alg": "EdDSA",
+                "crv": "Ed25519",
+                "x": "L6DvYquk4RvGhfIk65I2jH4LHelzkAAqZITMItlDNJs"
+            }
+        }
+    ],
+    "service": [
+        {
+            "name": "Unsecured A2A coder",
+            "id": "#a2a-coder",
+            "type": "A2A",
+            "serviceEndpoint": "http://localhost:4004/agents/coder/",
+            "capabilityInvocation": [
+                {
+                    "id": "#agent-a2a-coder-key-0",
+                    "type": "JsonWebKey2020",
+                    "publicKeyJwk": {
+                        "kty": "OKP",
+                        "alg": "EdDSA",
+                        "crv": "Ed25519",
+                        "x": "X9MoilXu7kEcXf2VSpqEA3tgaN-XyRKNSh9dDn5AxVo"
+                    }
+                }
+            ]
+        }
+    ]
+}
