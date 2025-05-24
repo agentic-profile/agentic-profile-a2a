@@ -13,7 +13,7 @@
                 "kty": "OKP",
                 "alg": "EdDSA",
                 "crv": "Ed25519",
-                "x": "IuHDazAkZFRA-PCrf8jOpw0qnmk7kEMPYfvFPlImZMs"
+                "x": "D64eY49yqygPWAlVwRpV3pyuV2KxQWtkWfNmcGg2y3Y"
             }
         }
     ],
@@ -31,7 +31,25 @@
                         "kty": "OKP",
                         "alg": "EdDSA",
                         "crv": "Ed25519",
-                        "x": "zqT3zvDNjjTtpMOTW7VrDDZt0ibq_QyzRVnzGaXsM08"
+                        "x": "snq_-iULLy1C9R_qGAJc4f5hNEssrT_8kjt08h5AHdo"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "A2A Eliza therapist with authentication",
+            "id": "#a2a-eliza",
+            "type": "A2A",
+            "serviceEndpoint": "http://localhost:4004/users/2/eliza/",
+            "capabilityInvocation": [
+                {
+                    "id": "#agent-a2a-eliza-key-0",
+                    "type": "JsonWebKey2020",
+                    "publicKeyJwk": {
+                        "kty": "OKP",
+                        "alg": "EdDSA",
+                        "crv": "Ed25519",
+                        "x": "cObVPGn0Hpqyni6bW5V_6ilvVl0EZQGxsvk0gjgnt9g"
                     }
                 }
             ]

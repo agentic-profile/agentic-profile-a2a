@@ -150,28 +150,36 @@ This demo is designed to run locally.
 
 6. Examples using Agentic Profile authentication
 
-    Start the A2A client with an Agentic Profile and authentication
-
-    ```bash
-    pnpm cli -p did:web:localhost%3A4004:users:2:coder#a2a-coder -u "#connect"
-    ```
-
     Start the A2A client with the well-known Agentic Profile and authentication
 
     ```bash
-    pnpm cli -i "a2a-service-demo-user" -p did:web:localhost%3A4004#a2a-coder
+    pnpm cli -i a2a-service-demo-user -p did:web:localhost%3A4004#a2a-coder -u #connect
+    ```
+
+    (The subsequent examples don't specify the "-i a2a-service-demo-user" because it is provided as a default to the A2A CLI)
+
+    Start the A2A client with an Agentic Profile and authentication
+
+    ```bash
+    pnpm cli -p did:web:localhost%3A4004:users:2:coder#a2a-coder -u #connect
     ```
 
     Start the A2A client with the well-known agent and implicit authentication
 
     ```bash
-    pnpm cli -p http://localhost:4004/
+    pnpm cli -p http://localhost:4004/ -u #connect
     ```
 
     Start the A2A client with the well-known agentic profile and authentication
 
     ```bash
-    pnpm cli -p did:web:localhost%3A4004#a2a-coder
+    pnpm cli -p did:web:localhost%3A4004#a2a-coder -u #connect
+    ```
+
+    Start the A2A client with Eliza and authentication
+
+    ```bash
+    pnpm cli -p did:web:localhost%3A4004#a2a-eliza -u #connect
     ```
 
 

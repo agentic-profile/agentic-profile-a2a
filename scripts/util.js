@@ -56,7 +56,7 @@ export const AGENT_CARD_TEMPLATE = {
     "description": "An agent that generates code based on natural language instructions and streams file outputs.",
     "url": null,
     "provider": {
-        "organization": "A2A Samples"
+        "organization": "A2A + Agentic Profile"
     },
     "version": "0.0.1",
     "capabilities": {
@@ -71,25 +71,24 @@ export const AGENT_CARD_TEMPLATE = {
     "defaultOutputModes": [
         "text",
         "file"
+    ]
+};
+
+export const AGENT_CODING_SKILL = {
+    "id": "code_generation",
+    "name": "Code Generation",
+    "description": "Generates code snippets or complete files based on user requests, streaming the results.",
+    "tags": [
+        "code",
+        "development",
+        "programming"
     ],
-    "skills": [
-        {
-            "id": "code_generation",
-            "name": "Code Generation",
-            "description": "Generates code snippets or complete files based on user requests, streaming the results.",
-            "tags": [
-                "code",
-                "development",
-                "programming"
-            ],
-            "examples": [
-                "Write a python function to calculate fibonacci numbers.",
-                "Create an HTML file with a basic button that alerts 'Hello!' when clicked.",
-                "Generate a TypeScript class for a user profile with name and email properties.",
-                "Refactor this Java code to be more efficient.",
-                "Write unit tests for the following Go function."
-            ]
-        }
+    "examples": [
+        "Write a python function to calculate fibonacci numbers.",
+        "Create an HTML file with a basic button that alerts 'Hello!' when clicked.",
+        "Generate a TypeScript class for a user profile with name and email properties.",
+        "Refactor this Java code to be more efficient.",
+        "Write unit tests for the following Go function."
     ]
 };
 

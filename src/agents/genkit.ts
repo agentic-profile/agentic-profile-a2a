@@ -7,12 +7,12 @@
  */
 
 import { genkit } from "genkit/beta";
-import { defineCodeFormat } from "./code-format.js";
+import { defineCodeFormat } from "./coder/code-format.js";
 import { gemini20Flash, googleAI } from "@genkit-ai/googleai";
 
 export const ai = genkit({
-  plugins: [googleAI()],
-  model: gemini20Flash.withConfig({ version: "gemini-2.5-flash-preview-04-17" }),
+    plugins: [googleAI()],
+    model: gemini20Flash.withConfig({ version: "gemini-2.5-flash-preview-04-17" }),
 });
 
 defineCodeFormat(ai);

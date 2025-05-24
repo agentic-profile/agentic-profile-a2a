@@ -8,7 +8,7 @@
 
 import { MessageData } from "genkit";
 import * as schema from "@agentic-profile/a2a-client/schema";
-import { ai } from "./genkit.js";
+import { ai } from "../genkit.js";
 
 import { TaskContext, TaskYieldUpdate } from "@agentic-profile/a2a-service";
 import { CodeMessage } from "./code-format.js"; // CodeMessageSchema might not be needed here
@@ -141,55 +141,3 @@ export async function* coderAgent({
     };
 }
 
-/*
-
-const coderAgentCard: schema.AgentCard = {
-    name: "Coder Agent",
-    description:
-        "An agent that generates code based on natural language instructions and streams file outputs.",
-    url: "http://localhost:41241", // Default port used in the script
-    provider: {
-        organization: "A2A Samples",
-    },
-    version: "0.0.1",
-    capabilities: {
-        // It yields artifact updates progressively, matching the definition of streaming.
-        streaming: true,
-        pushNotifications: false, // No indication of pushNotifications support
-        stateTransitionHistory: true, // Uses history for context
-    },
-    authentication: null, // No auth mentioned
-    defaultInputModes: ["text"],
-    defaultOutputModes: ["text", "file"], // Outputs code as text artifacts representing files
-    skills: [
-        {
-            id: "code_generation",
-            name: "Code Generation",
-            description:
-                "Generates code snippets or complete files based on user requests, streaming the results.",
-            tags: ["code", "development", "programming"],
-            examples: [
-                "Write a python function to calculate fibonacci numbers.",
-                "Create an HTML file with a basic button that alerts 'Hello!' when clicked.",
-                "Generate a TypeScript class for a user profile with name and email properties.",
-                "Refactor this Java code to be more efficient.",
-                "Write unit tests for the following Go function.",
-            ],
-            // Although the agent outputs 'file' type via artifacts, the default is suitable here.
-            // Output modes could also be refined if the agent explicitly handled different file types.
-        },
-    ],
-};
-
-console.log( "coder card", JSON.stringify(coderAgentCard,null,4));
-
-const service = new A2AService(coderAgent, {
-    //card: coderAgentCard,
-});
-
-service.start(); // Default port 41241
-
-console.log("[CoderAgent] Service started on http://localhost:41241");
-console.log("[CoderAgent] Press Ctrl+C to stop the service");
-
-*/

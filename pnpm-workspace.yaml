@@ -1,0 +1,5 @@
+onlyBuiltDependencies:
+  - protobufjs
+overrides:
+  '@agentic-profile/common': link:../agentic-profile-common
+  '@agentic-profile/a2a-client': link:../agentic-profile-a2a-client

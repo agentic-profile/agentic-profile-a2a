@@ -24,10 +24,10 @@
     "homepage": "https://github.com/agentic-profile/agentic-profile-a2a#readme",
     "dependencies": {
         "@agentic-profile/a2a-client": "^0.5.1",
-        "@agentic-profile/a2a-service": "^0.5.1",
-        "@agentic-profile/auth": "^0.5.0",
+        "@agentic-profile/a2a-service": "^0.5.2",
+        "@agentic-profile/auth": "^0.5.1",
         "@agentic-profile/common": "^0.5.1",
-        "@agentic-profile/express-common": "^0.5.1",
+        "@agentic-profile/express-common": "^0.5.2",
         "@codegenie/serverless-express": "^4.16.0",
         "@genkit-ai/googleai": "^1.7.0",
         "cors": "^2.8.5",

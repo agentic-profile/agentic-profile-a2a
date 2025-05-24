@@ -11,7 +11,8 @@ import {
 } from "@agentic-profile/express-common";
 
 import { DemoStore } from "./storage/memory.js";
-import { coderAgent } from "./agents/coder/index.js";  
+import { coderAgent } from "./agents/coder/coder-agent.js";  
+import { elizaAgent } from "./agents/eliza/eliza-agent.js";  
 import { commonRoutes } from "./routes.js";
 
 // --- Expose /www directory for static files ---
@@ -47,20 +48,22 @@ app.use("/", commonRoutes({
     status: { name: "Testing Agentic Profile with A2A" }
 }));
 
-
-//==== Example 1: A2A agent with no authentication ====
+//==== Example 1: A2A coder agent with no authentication ====
 const a2aService1 = new A2AService( coderAgent, {} );
 app.use("/agents/coder", a2aService1.routes() );
 
-
-//==== Example 2: A2A agent with authentication ====
+//==== Example 2: A2A coder agent with authentication ====
 const a2aService2 = new A2AService( coderAgent, { agentSessionResolver } );
 app.use("/users/:uid/coder", a2aService2.routes() );
+
+//==== Example 3: A2A agent with authentication ====
+const a2aService3 = new A2AService( elizaAgent, { agentSessionResolver } );
+app.use("/users/:uid/eliza", a2aService3.routes() );
 
 // Basic error handler for a2a services
 app.use( errorHandler );
 
-//==== Example 3: Agentic Profile REST agent with authentication ====
+//==== Example 4: Agentic Profile REST agent with authentication ====
 app.put( "/users/:uid/eliza", asyncHandler( async (req, res ) => {
     const { uid } = req.params;
 

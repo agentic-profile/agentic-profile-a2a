@@ -1,9 +1,9 @@
 {
-    "name": "A2A coder with no authentication",
+    "name": "A2A coder with authentication",
     "description": "An agent that generates code based on natural language instructions and streams file outputs.",
     "url": "http://localhost:4004/users/2/coder/",
     "provider": {
-        "organization": "A2A Samples"
+        "organization": "A2A + Agentic Profile"
     },
     "version": "0.0.1",
     "capabilities": {

@@ -3,7 +3,7 @@
     "description": "An agent that generates code based on natural language instructions and streams file outputs.",
     "url": "http://localhost:4004/agents/coder/",
     "provider": {
-        "organization": "A2A Samples"
+        "organization": "A2A + Agentic Profile"
     },
     "version": "0.0.1",
     "capabilities": {
