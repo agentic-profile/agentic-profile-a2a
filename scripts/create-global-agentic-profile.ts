@@ -24,7 +24,7 @@ import {
             url: `http://localhost:${port}/a2a/connect`
         }
     ];
-    const { profile, keyring, b64uPublicKey } = await createAgenticProfile({ services, createJwk: createEdDsaJwk });
+    const { profile, keyring, b64uPublicKey } = await createAgenticProfile({ services, createJwkSet: createEdDsaJwk });
 
     try {
         // publish profile to web (so did:web:... will resolve)

@@ -52,7 +52,7 @@ export default class ElizaBot {
         }
     }
 
-    state() {
+    getState() {
         return {
             quit: this.quit,
             mem: this.mem,

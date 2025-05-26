@@ -29,6 +29,7 @@ The SDK sourcecode has the following:
     - coder/ - An A2A programming assistant/agent
     - eliza/ - The classic Eliza therapist
 - storage/ - In Memory implementation of the storage interface
+- app - Demonstration multi-agent multi-tenant service
 - routes - Provides useful endpoints like /status and /storage for debugging
 
 The root directory contains:
@@ -225,14 +226,6 @@ async function* myAgentLogic(
     message: { role: "agent", parts: [{ text: "Done!" }] },
   };
 }
-
-// 2. Create and start the server
-const store = new InMemoryTaskStore(); // Or new FileStore()
-const server = new A2AServer(myAgentLogic, { taskStore: store });
-
-server.start(); // Starts listening on default port 41241
-
-console.log("A2A Server started.");
 ```
 
 

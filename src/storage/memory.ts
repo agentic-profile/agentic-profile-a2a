@@ -25,7 +25,7 @@ export class DemoStore extends InMemoryStore implements UnifiedStore {
 
     async dump() {
         return {
-            database: 'memory',
+            ...(await super.dump()),
             accounts: mapToObject( this.accounts ),
         }
     }
