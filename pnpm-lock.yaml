@@ -9,20 +9,20 @@ importers:
   .:
     dependencies:
       '@agentic-profile/a2a-client':
-        specifier: ^0.5.4
-        version: 0.5.4
+        specifier: ^0.6.0
+        version: 0.6.0
       '@agentic-profile/a2a-service':
-        specifier: ^0.5.4
-        version: 0.5.4
+        specifier: ^0.6.0
+        version: 0.6.0
       '@agentic-profile/auth':
-        specifier: ^0.5.4
-        version: 0.5.4
+        specifier: ^0.6.0
+        version: 0.6.0
       '@agentic-profile/common':
-        specifier: ^0.5.4
-        version: 0.5.4
+        specifier: ^0.6.0
+        version: 0.6.0
       '@agentic-profile/express-common':
-        specifier: ^0.5.5
-        version: 0.5.5
+        specifier: ^0.6.0
+        version: 0.6.0
       '@codegenie/serverless-express':
         specifier: ^4.16.0
         version: 4.16.0
@@ -78,20 +78,20 @@ importers:
 
 packages:
 
-  '@agentic-profile/a2a-client@0.5.4':
-    resolution: {integrity: sha512-o65xcX4zGZ2vIYHcMFxBLtHQj44Q5ra55PJXa3bcEmXtKuSet7ZX7CWLLd7SGB405wl3/lC9OvmUUX33bvrKMQ==}
+  '@agentic-profile/a2a-client@0.6.0':
+    resolution: {integrity: sha512-mhLiLSSN7RfTLuZ+p/f/U+qJRhvByd1JB0/S0mpAFZYqRNbVnF9i0sLIleUTatEJII8Vr5NAS0GQ+sL8RwgMpg==}
 
-  '@agentic-profile/a2a-service@0.5.4':
-    resolution: {integrity: sha512-Ld19SztQB9dbIbfWpJsqB++94hKIg1l6JWENJrNK2BLar+ixU/zE6F7LuEfrmmtVbcQiW6eHyQmZY5dvanI4sQ==}
+  '@agentic-profile/a2a-service@0.6.0':
+    resolution: {integrity: sha512-jfp5La8da9z415y9XN1l/ESc8bGft/pq6mn6dtWcmUtPoV3HEMtHGx7rmYo2vzB+X1iV9MIlIToZFqYR9asECA==}
 
-  '@agentic-profile/auth@0.5.4':
-    resolution: {integrity: sha512-6vvF6JfjrSdFcd4vFGv5X3CzCBKmxVUKdLeqJUncoF8ayBcI7xB1bMpdHpVzyYyqtc87Z7TBHTZheVDXJ1or2w==}
+  '@agentic-profile/auth@0.6.0':
+    resolution: {integrity: sha512-BwuaBfo+CA1g0JrcWmZW1Ek2nh8vV6J+kNX5kXbd0dH546ekqXg79NBiu6TDN0Ixb2H+5rhPv+kd/fwdpvovow==}
 
-  '@agentic-profile/common@0.5.4':
-    resolution: {integrity: sha512-OUfC9wYTpT9ZucaNAlc+BjayUF2ICqzNJLAjnvsqYW9mtcG03ItcG3Z2zW2nLkt3+W/7tram3K5ufrvnLeLX7g==}
+  '@agentic-profile/common@0.6.0':
+    resolution: {integrity: sha512-rSykQakmrXPRsI4jOERVWF10J7brL9o+KyTRAwQbVEH7z20zEUfqINxaThz9YtBGzdMCvnFiY8aYmxX6+JIIiw==}
 
-  '@agentic-profile/express-common@0.5.5':
-    resolution: {integrity: sha512-chi7t9fOFCK1lT7fq3arlUqh48R8sgIy+FgOWUEj6Gv9Eiz4iT0HBKJIXsg9xJDMTW6wkzexu3LAOBaY9RLmuw==}
+  '@agentic-profile/express-common@0.6.0':
+    resolution: {integrity: sha512-C9Jzp//kIkH+IfuvH5ygMh58yqhhGQTOOsqgYTEK/57wv+ZXAfPcOOrnOMrC8HejAmC/b/QH8mBW6x94O5TNkA==}
 
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
@@ -2656,36 +2656,36 @@ packages:
 
 snapshots:
 
-  '@agentic-profile/a2a-client@0.5.4':
+  '@agentic-profile/a2a-client@0.6.0':
     dependencies:
-      '@agentic-profile/auth': 0.5.4
-      '@agentic-profile/common': 0.5.4
+      '@agentic-profile/auth': 0.6.0
+      '@agentic-profile/common': 0.6.0
 
-  '@agentic-profile/a2a-service@0.5.4':
+  '@agentic-profile/a2a-service@0.6.0':
     dependencies:
-      '@agentic-profile/a2a-client': 0.5.4
-      '@agentic-profile/auth': 0.5.4
-      '@agentic-profile/common': 0.5.4
+      '@agentic-profile/a2a-client': 0.6.0
+      '@agentic-profile/auth': 0.6.0
+      '@agentic-profile/common': 0.6.0
       express: 5.1.0
     transitivePeerDependencies:
       - supports-color
 
-  '@agentic-profile/auth@0.5.4':
+  '@agentic-profile/auth@0.6.0':
     dependencies:
-      '@agentic-profile/common': 0.5.4
+      '@agentic-profile/common': 0.6.0
       '@noble/ed25519': 2.2.3
       did-resolver: 4.1.0
       loglevel: 1.9.2
 
-  '@agentic-profile/common@0.5.4':
+  '@agentic-profile/common@0.6.0':
     dependencies:
       did-resolver: 4.1.0
       loglevel: 1.9.2
 
-  '@agentic-profile/express-common@0.5.5':
+  '@agentic-profile/express-common@0.6.0':
     dependencies:
-      '@agentic-profile/auth': 0.5.4
-      '@agentic-profile/common': 0.5.4
+      '@agentic-profile/auth': 0.6.0
+      '@agentic-profile/common': 0.6.0
       cors: 2.8.5
       did-resolver: 4.1.0
       express: 4.21.2

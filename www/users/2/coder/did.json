@@ -13,7 +13,7 @@
                 "kty": "OKP",
                 "alg": "EdDSA",
                 "crv": "Ed25519",
-                "x": "VTijyEtrFyFyNj12EB9d35oo8jlk-xd2JBeoHk1CuCI"
+                "x": "QarhIPY8AaFp-QmPw7egHep6nN828DD5QNOGSZKkvd8"
             }
         }
     ],
@@ -31,7 +31,7 @@
                         "kty": "OKP",
                         "alg": "EdDSA",
                         "crv": "Ed25519",
-                        "x": "2ED7jvGXRGsZePiMzmwsLJk658G4Z6nPbe66f9LtyGg"
+                        "x": "76CA_peA-USe3aqXYnHvjwODo77aRx0Zb50pZop_jWw"
                     }
                 }
             ]
