@@ -4,6 +4,7 @@ www/iam/*
 google-keys.json
 keyring.json
 pnpm-workspace.yaml
+did.json
 
 # Logs
 logs
