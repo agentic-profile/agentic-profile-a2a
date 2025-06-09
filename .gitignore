@@ -3,6 +3,7 @@ function.zip
 www/iam/*
 google-keys.json
 keyring.json
+pnpm-workspace.yaml
 
 # Logs
 logs
