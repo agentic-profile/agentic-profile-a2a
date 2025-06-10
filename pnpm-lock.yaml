@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@agentic-profile/a2a-client':
-        specifier: ^0.6.0
+        specifier: ^0.6.1
         version: 0.6.1
       '@agentic-profile/a2a-service':
         specifier: ^0.6.1

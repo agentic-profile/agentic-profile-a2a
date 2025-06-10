@@ -8,18 +8,8 @@
         "forceConsistentCasingInFileNames": true,
         "strict": true,
         "noUnusedLocals": true,
-        "skipLibCheck": true,
-        "baseUrl": ".",
-        "paths": {
-            "@agentic-profile/common/*": ["../agentic-profile-common/src/*"],
-            "@agentic-profile/common": ["../agentic-profile-common/src"],
-            "@agentic-profile/auth/*": ["../agentic-profile-auth/src/*"],
-            "@agentic-profile/auth": ["../agentic-profile-auth/src"],
-            "@agentic-profile/a2a-service/*": ["../agentic-profile-a2a-service/src/*"],
-            "@agentic-profile/a2a-service": ["../agentic-profile-a2a-service/src"],
-            "@agentic-profile/a2a-client/*": ["../agentic-profile-a2a-client/src/*"],
-            "@agentic-profile/a2a-client": ["../agentic-profile-a2a-client/src"]
-        }
+        "noUnusedParameters": true, 
+        "skipLibCheck": true
     },
     "include": ["src/**/*"]
 }

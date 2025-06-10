@@ -50,7 +50,7 @@ export class DemoStore extends InMemoryStore implements UnifiedStore {
         return account;
     }
 
-    async fetchAccountFields( uid: UserID, fields?: string ) {
+    async fetchAccountFields( uid: UserID, _fields?: string ) {
         return this.accounts.get( ''+uid );
     }
 }

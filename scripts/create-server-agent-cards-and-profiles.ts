@@ -15,33 +15,36 @@ import {
 } from "./util.js";
 import { JWKSet } from '@agentic-profile/common/schema';
 
+const port = process.env.PORT || 4004;
+const hostname = process.env.HOSTNAME || "localhost:" + port;
+const baseUrl = process.env.BASE_URL || `http://${hostname}`;
 
 (async ()=>{
-    const port = process.env.PORT || 4004;
+
     const keyring: JWKSet[] = [];
 
     try {
         // Well-known agentic profile and agent card
         let newKeys = await createAgentCardAndProfile({
             dir: join( __dirname, "..", "www", ".well-known" ),
-            did: `did:web:localhost:${port}`,
+            did: `did:web:${hostname}`,
             services: [
                 {
                     name: "Secure A2A coder",
                     type: "A2A",
                     id: "a2a-coder",
-                    url: `http://localhost:${port}`  // points to the one well-known agent for this server
+                    url: baseUrl  // points to the one well-known agent for this server
                 },
                 {
                     name: "A2A Eliza therapist with authentication",
                     type: "A2A",
                     id: "a2a-eliza",
-                    url: `http://localhost:${port}/users/2/eliza/` // points to the Eliza agent which is defined later...
+                    url: `${baseUrl}/users/2/eliza/` // points to the Eliza agent which is defined later...
                 }
             ],
             agents: [{
                 name: "A2A coder",
-                url: `http://localhost:${port}/users/2/coder/`,
+                url: `${baseUrl}/users/2/coder/`,
                 skills: [ AGENT_CODING_SKILL ]
             }]
         });
@@ -50,18 +53,18 @@ import { JWKSet } from '@agentic-profile/common/schema';
         // Coder agent with no authentication
         newKeys = await createAgentCardAndProfile({
             dir: join( __dirname, "..", "www", "agents", "coder" ),
-            did: `did:web:localhost:${port}:agents:coder`,
+            did: `did:web:${hostname}:agents:coder`,
             services: [
                 {
                     name: "Unsecured A2A coder",
                     type: "A2A",
                     id: "a2a-coder",
-                    url: `http://localhost:${port}/agents/coder/`
+                    url: `${baseUrl}/agents/coder/`
                 }
             ],
             agents: [{
                 name: "A2A coder with no authentication",
-                url: `http://localhost:${port}/agents/coder/`,
+                url: `${baseUrl}/agents/coder/`,
                 skills: [ AGENT_CODING_SKILL ]
             }]
         });
@@ -70,18 +73,18 @@ import { JWKSet } from '@agentic-profile/common/schema';
         // Coder agent with authentication
         newKeys = await createAgentCardAndProfile({
             dir: join( __dirname, "..", "www", "users", "2", "coder" ),
-            did: `did:web:localhost:${port}:users:2:coder`,
+            did: `did:web:${hostname}:users:2:coder`,
             services: [
                 {
                     name: "A2A coder with authentication",
                     type: "A2A",
                     id: "a2a-coder",
-                    url: `http://localhost:${port}/users/2/coder/`
+                    url: `${baseUrl}/users/2/coder/`
                 }
             ],
             agents: [{
                 name: "A2A coder with authentication",
-                url: `http://localhost:${port}/users/2/coder/`,
+                url: `${baseUrl}/users/2/coder/`,
                 skills: [ AGENT_CODING_SKILL ]
             }]
         });
@@ -90,18 +93,18 @@ import { JWKSet } from '@agentic-profile/common/schema';
         // Eliza agent with authentication
         newKeys = await createAgentCardAndProfile({
             dir: join( __dirname, "..", "www", "users", "2", "eliza" ),
-            did: `did:web:localhost:${port}:users:2:eliza`,
+            did: `did:web:${hostname}:users:2:eliza`,
             services: [
                 {
                     name: "A2A Eliza therapist with authentication",
                     type: "A2A",
                     id: "a2a-eliza",
-                    url: `http://localhost:${port}/users/2/eliza/`
+                    url: `${baseUrl}/users/2/eliza/`
                 }
             ],
             agents: [{
                 name: "A2A Eliza therapist with authentication",
-                url: `http://localhost:${port}/users/2/eliza/`,
+                url: `${baseUrl}/users/2/eliza/`,
                 skills: [],
                 capabilities: { stateTransitionHistory: true }
             }]

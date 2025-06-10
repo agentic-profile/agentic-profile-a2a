@@ -1,15 +1,14 @@
 {
     "name": "@agentic-profile/a2a",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "description": "A2A (Agent-to-Agent) SDK for quickly developing multi-tenant agentic services. Supports globally unique user and business scoped agent ids, and universal authentication using the Agentic Profile",
     "main": "index.js",
     "scripts": {
-        "prepare": "tsup",
         "create-server-agent-cards-and-profiles": "npx tsx scripts/create-server-agent-cards-and-profiles.ts",
         "create-global-agentic-profile": "npx tsx scripts/create-global-agentic-profile.ts",
         "cli": "npx tsx scripts/cli.ts",
         "dev": "npx tsx --inspect index.local.ts",
-        "build": "tsup",
+        "build": "tsc",
         "test": "jest"
     },
     "type": "module",
@@ -24,7 +23,7 @@
     },
     "homepage": "https://github.com/agentic-profile/agentic-profile-a2a#readme",
     "dependencies": {
-        "@agentic-profile/a2a-client": "^0.6.0",
+        "@agentic-profile/a2a-client": "^0.6.1",
         "@agentic-profile/a2a-service": "^0.6.1",
         "@agentic-profile/auth": "^0.6.0",
         "@agentic-profile/common": "^0.6.0",
@@ -49,5 +48,5 @@
         "tsup": "^8.3.6",
         "typescript": "^5.8.3"
     },
-    "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
+    "packageManager": "pnpm@10.12.1+sha512.f0dda8580f0ee9481c5c79a1d927b9164f2c478e90992ad268bbb2465a736984391d6333d2c327913578b2804af33474ca554ba29c04a8b13060a717675ae3ac"
 }
