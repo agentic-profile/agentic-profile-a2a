@@ -1,6 +1,6 @@
 {
     "name": "@agentic-profile/a2a",
-    "version": "0.6.2",
+    "version": "0.6.3",
     "description": "A2A (Agent-to-Agent) SDK for quickly developing multi-tenant agentic services. Supports globally unique user and business scoped agent ids, and universal authentication using the Agentic Profile",
     "main": "index.js",
     "scripts": {
@@ -23,10 +23,11 @@
     },
     "homepage": "https://github.com/agentic-profile/agentic-profile-a2a#readme",
     "dependencies": {
-        "@agentic-profile/a2a-client": "^0.6.1",
+        "@agentic-profile/a2a-client": "^0.6.2",
         "@agentic-profile/a2a-service": "^0.6.1",
         "@agentic-profile/auth": "^0.6.0",
         "@agentic-profile/common": "^0.6.0",
+        "@agentic-profile/eliza": "^0.1.0",
         "@agentic-profile/express-common": "^0.6.0",
         "@codegenie/serverless-express": "^4.16.0",
         "@genkit-ai/googleai": "^1.7.0",

@@ -12,7 +12,7 @@ import {
 
 import { DemoStore } from "./storage/memory.js";
 import { coderAgent } from "./agents/coder/coder-agent.js";  
-import { elizaAgent } from "./agents/eliza/eliza-agent.js";  
+import { elizaAgent } from "./agents/eliza.js";  
 import { commonRoutes } from "./routes.js";
 
 // --- Expose /www directory for static files ---

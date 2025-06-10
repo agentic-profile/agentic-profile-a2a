@@ -1,6 +1,6 @@
 import { Task } from "@agentic-profile/a2a-client/schema";
 import { TaskContext, TaskYieldUpdate } from "@agentic-profile/a2a-service";
-import ElizaBot from "./elizabot.js";
+import { ElizaBot } from "@agentic-profile/eliza";
 
 
 export async function* elizaAgent({

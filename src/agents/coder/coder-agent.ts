@@ -13,7 +13,8 @@ import { ai } from "../genkit.js";
 import { TaskContext, TaskYieldUpdate } from "@agentic-profile/a2a-service";
 import { CodeMessage } from "./code-format.js"; // CodeMessageSchema might not be needed here
 
-if (!process.env.GEMINI_API_KEY) {  
+const hasGeminiKey = !!process.env.GEMINI_API_KEY;
+if (!hasGeminiKey) {  
     console.warn("WARNING: GEMINI_API_KEY environment variable not set.")
 }
 
@@ -39,6 +40,18 @@ export async function* coderAgent({
             message: {
                 role: "agent",
                 parts: [{ type: "text", text: "No input message found." }],
+            },
+        };
+        return;
+    }
+
+    if( !hasGeminiKey ) {
+        const text = process.env.NO_GEMINI_KEY_MESSAGE ?? "No Gemini API key found.  Please set the GEMINI_API_KEY environment variable.";
+        yield {
+            state: "completed",
+            message: {
+                role: "agent",
+                parts: [{ type: "text", text }],
             },
         };
         return;
