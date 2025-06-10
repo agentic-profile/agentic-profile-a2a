@@ -5,6 +5,7 @@ google-keys.json
 keyring.json
 pnpm-workspace.yaml
 did.json
+agent.json
 
 # Logs
 logs
