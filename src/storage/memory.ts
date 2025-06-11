@@ -1,39 +1,45 @@
-import {
+/*import {
     UserID
 } from "@agentic-profile/common/schema";
 
 import {
     Account,
     CreateAccount,
-} from "./models.js";
+} from "./models.js";*/
 import { InMemoryStore } from "@agentic-profile/a2a-service";
 import { UnifiedStore } from "./models.js";
 
-
+/*
 function mapToObject<K extends PropertyKey, V>(map: Map<K, V>): Record<K, V> {
     return Object.fromEntries(map) as Record<K, V>;
 }
+*/
 
-export class DemoStore extends InMemoryStore implements UnifiedStore {
+export class MemoryStore extends InMemoryStore implements UnifiedStore {
+
+    constructor() {
+        super();
+        console.log( "Using MemoryStore" );    
+    }
 
     //
     // Unified Store
     //
 
-    private nextUserId = 1;
-    private accounts = new Map<string,Account>();
+    //private nextUserId = 1;
+    //private accounts = new Map<string,Account>();
 
     async dump() {
         return {
             ...(await super.dump()),
-            accounts: mapToObject( this.accounts ),
+            //accounts: mapToObject( this.accounts ),
         }
     }
 
 
     //
     // Add Account Support
-    //
+    /*
 
     async createAccount( { options, fields }: CreateAccount ) {
         let uid;
@@ -52,5 +58,5 @@ export class DemoStore extends InMemoryStore implements UnifiedStore {
 
     async fetchAccountFields( uid: UserID, _fields?: string ) {
         return this.accounts.get( ''+uid );
-    }
+    }*/
 }

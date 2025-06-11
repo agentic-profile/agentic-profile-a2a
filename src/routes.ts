@@ -47,6 +47,7 @@ export function commonRoutes( { status = {}, store }: CommonRouteOptions ): Rout
             .send( prettyJson(data) ); // make easier to read ;)
     }));
 
+    /*
     router.post( "/accounts", asyncHandler( async (req: Request, res: Response) => {
         if( !isAdmin( req ) )
             throw new Error( "POST /accounts only available to admins" );
@@ -54,6 +55,7 @@ export function commonRoutes( { status = {}, store }: CommonRouteOptions ): Rout
         const account = await store?.createAccount( req.body );
         res.json({ account });
     }));
+    */
 
     console.log( "Common routes are ready" );
     return router;

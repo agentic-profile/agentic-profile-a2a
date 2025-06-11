@@ -10,7 +10,10 @@ import {
     resolveAgentSession
 } from "@agentic-profile/express-common";
 
-import { DemoStore } from "./storage/memory.js";
+import { MemoryStore } from "./storage/memory.js";
+import { RedisStore } from "./storage/redis.js";
+const store = process.env.REDIS_URL ? new RedisStore( process.env.REDIS_URL ) : new MemoryStore();
+
 import { coderAgent } from "./agents/coder/coder-agent.js";  
 import { elizaAgent } from "./agents/eliza.js";  
 import { commonRoutes } from "./routes.js";
@@ -28,7 +31,7 @@ app.use("/", express.static(
 ));
 
 // --- Set up database ---
-const store = new DemoStore();
+/*
 store.createAccount({
     options: { uid: 2 },        // force to uid=2
     fields: {
@@ -36,6 +39,7 @@ store.createAccount({
         credit: 10              // $10
     }
 });
+*/
 
 const didResolver = createDidResolver({ store });
 const agentSessionResolver = async ( req: Request, res: Response ) => {

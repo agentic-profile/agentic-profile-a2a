@@ -185,9 +185,15 @@ This demo is designed to run locally.
 
 ## Testing with the live SDK example server
 
+1. Make sure you have installed the dependencies
+
+    ```bash
+    pnpm install
+    ```
+
 2. For each of the following examples, open a new terminal window. For examples with authentication skip to step #3
 
-    Start the A2A client using the agent card, but still no authentication
+    Start the A2A client using the agent card, but no authentication
 
     ```bash
     pnpm cli -p https://example.p2pagentic.ai/agents/coder/
@@ -202,13 +208,13 @@ This demo is designed to run locally.
 3. In order to use authentication, you must create an agentic profile and keys to authenticate with.
 
     ```bash
-    pnpm run create-global-agentic-profile
+    pnpm create-global-agentic-profile
     ```
 
     The above script creates a new agentic profile on the test.agenticprofile.ai server, and also stores
     a copy in your filesystem at ~/.agentic/iam/a2a-sdk-demo-user
 
-4. Examples using Agentic Profile authentication as https://example.p2pagentic.ai
+4. Examples using Agentic Profile authentication at https://example.p2pagentic.ai
 
     Start the A2A client with the well-known Agentic Profile and authentication
 
