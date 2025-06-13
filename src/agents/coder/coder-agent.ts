@@ -6,9 +6,10 @@
  * well as other enhancements.
  */
 
+
 import { MessageData } from "genkit";
 import * as schema from "@agentic-profile/a2a-client/schema";
-import { ai } from "../genkit.js";
+import { ai } from "./genkit.js";
 
 import { TaskContext, TaskYieldUpdate } from "@agentic-profile/a2a-service";
 import { CodeMessage } from "./code-format.js"; // CodeMessageSchema might not be needed here
@@ -22,6 +23,7 @@ export async function* coderAgent({
     task,
     history, // Extract history from context
 }: TaskContext): AsyncGenerator<TaskYieldUpdate, schema.Task | void, unknown> {
+
     // Use AsyncGenerator and correct return type
     // Map A2A history to Genkit messages
     const messages: MessageData[] = (history ?? [])
@@ -71,6 +73,8 @@ export async function* coderAgent({
         output: { format: "code" },
         messages, // Pass mapped history
     });
+    
+    console.log( "out", stream, response );
 
     const fileContents = new Map<string, string>(); // Store latest content per file
     const fileOrder: string[] = []; // Store order of file appearance
@@ -144,7 +148,7 @@ export async function* coderAgent({
             parts: [
                 {
                     type: "text",
-                    text:
+                    text: 
                         generatedFiles.length > 0
                             ? `Generated files: ${generatedFiles.join(", ")}`
                             : "Completed, but no files were generated.",

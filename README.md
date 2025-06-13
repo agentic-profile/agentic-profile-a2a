@@ -13,8 +13,9 @@ This SDK demonstrates use of the [Agentic Profile A2A Client](https://www.npmjs.
 
 This SDK provides:
 
-- Demonstration of an A2A client and an A2A service
+- Demonstration of an A2A client 
 - Example Node service using Express to host two A2A agents
+- Support for Universal Authentication using public key cryptography
 - Scripts to create agent cards and Agentic Profiles
 - Support for multi-tenancy, where one agent endpoint can represent many different accounts
 
@@ -26,15 +27,15 @@ This SDK uses the A2A client and service libraries that are enhanced with the Ag
 The SDK sourcecode has the following:
 
 - agents/
-    - coder/ - An A2A programming assistant/agent
-    - eliza/ - The classic Eliza therapist
-- storage/ - In Memory implementation of the storage interface
+    - coder/ - An A2A programming assistant/agent using Gemini (Gemini API key required)
+    - eliza - The classic Eliza therapist
+- storage/ - In Memory and Redis implementations of the storage interface
 - app - Demonstration multi-agent multi-tenant service
 - routes - Provides useful endpoints like /status and /storage for debugging
 
 The root directory contains:
 
-- index.local.ts - A demonstration of an A2A server with globally unique user and business scoped agent ids, and universal authentication
+- index.local.ts - A demonstration of a locally running A2A server with globally unique user and business scoped agent ids, and universal authentication
 - index.js - An AWS Lambda ready server entry point.  See the deploy.sh script for example usage
 
 
@@ -45,8 +46,8 @@ This demo is designed to run locally.
 1. Requirements - Make sure these are installed:
 
     - [git](https://github.com/git-guides/install-git)
-    - [node](https://nodejs.org/en/download)
-    - pnpm (part of node)
+    - [Node.js](https://nodejs.org/en/download)
+    - pnpm (part of Node.js)
 
 2. From the shell, clone this repository and switch to the project directory.
 
@@ -55,10 +56,11 @@ This demo is designed to run locally.
     cd agentic-profile-a2a
     ```
 
-3. Download dependencies
+3. Download dependencies and build server
 
     ```bash
     pnpm install
+    pnpm build
     ```
 
 4. Create agent cards and agentic profiles for the server agents:
@@ -128,16 +130,16 @@ This demo is designed to run locally.
 
 2. For each of the following examples, open a new terminal window. For examples with authentication skip to step #3
 
-    Start the A2A client using the agent card, but still no authentication
+    Start the A2A Eliza client using the agent card, but no authentication
 
     ```bash
-    pnpm cli -p http://localhost:4004/agents/coder/
+    pnpm cli -p http://localhost:4004/agents/eliza/
     ```
 
-    Start the A2A client using the Agentic Profile, but still no authentication
+    Start the A2A Eliza client using the Agentic Profile, but still no authentication
 
     ```bash
-    pnpm cli -p did:web:localhost%3A4004:agents:coder#a2a-coder
+    pnpm cli -p did:web:localhost%3A4004:agents:eliza#chat
     ```
 
 3. In order to use authentication, you must create an agentic profile and keys to authenticate with.
@@ -149,38 +151,38 @@ This demo is designed to run locally.
     The above script creates a new agentic profile on the test.agenticprofile.ai server, and also stores
     a copy in your filesystem at ~/.agentic/iam/a2a-sdk-demo-user
 
-4. Examples using Agentic Profile authentication
+4. Examples using Universal authentication with the Agentic Profile
 
     Start the A2A client with the well-known Agentic Profile and authentication
 
     ```bash
-    pnpm cli -i a2a-service-demo-user -p did:web:localhost%3A4004#a2a-coder -u #connect
+    pnpm cli -i a2a-service-demo-user -p did:web:localhost%3A4004#coder -u #connect
     ```
 
-    (The subsequent examples don't specify the "-i a2a-service-demo-user" because it is provided as a default to the A2A CLI)
+    > The subsequent examples don't specify the "-i a2a-service-demo-user" because it is provided as a default to the A2A CLI)
 
     Start the A2A client with an Agentic Profile and authentication
 
     ```bash
-    pnpm cli -p did:web:localhost%3A4004:users:2:coder#a2a-coder -u #connect
+    pnpm cli -p did:web:localhost%3A4004:users:2:coder#chat -u #connect
     ```
 
-    Start the A2A client with the well-known agent and implicit authentication
+    Start the A2A client with the well-known Eliza agent and implicit authentication
 
     ```bash
     pnpm cli -p http://localhost:4004/ -u #connect
     ```
 
-    Start the A2A client with the well-known agentic profile and authentication
+    Start the A2A client with the well-known agentic profile, coder agent, and authentication
 
     ```bash
-    pnpm cli -p did:web:localhost%3A4004#a2a-coder -u #connect
+    pnpm cli -p did:web:localhost%3A4004#coder -u #connect
     ```
 
-    Start the A2A client with Eliza and authentication
+    Start the A2A client with the well-known agentic profile, Eliza, and authentication
 
     ```bash
-    pnpm cli -p did:web:localhost%3A4004#a2a-eliza -u #connect
+    pnpm cli -p did:web:localhost%3A4004#eliza -u #connect
     ```
 
 ## Testing with the live SDK example server
@@ -202,7 +204,7 @@ This demo is designed to run locally.
     Start the A2A client using the Agentic Profile, but still no authentication
 
     ```bash
-    pnpm cli -p did:web:example.p2pagentic.ai:agents:coder#a2a-coder
+    pnpm cli -p did:web:example.p2pagentic.ai:agents:coder#chat
     ```
 
 3. In order to use authentication, you must create an agentic profile and keys to authenticate with.
@@ -219,7 +221,7 @@ This demo is designed to run locally.
     Start the A2A client with the well-known Agentic Profile and authentication
 
     ```bash
-    pnpm cli -i a2a-service-demo-user -p did:web:example.p2pagentic.ai#a2a-coder -u #connect
+    pnpm cli -i a2a-service-demo-user -p did:web:example.p2pagentic.ai#coder -u #connect
     ```
 
     (The subsequent examples don't specify the "-i a2a-service-demo-user" because it is provided as a default to the A2A CLI)
@@ -227,7 +229,7 @@ This demo is designed to run locally.
     Start the A2A client with an Agentic Profile and authentication
 
     ```bash
-    pnpm cli -p did:web:example.p2pagentic.ai:users:2:coder#a2a-coder -u #connect
+    pnpm cli -p did:web:example.p2pagentic.ai:users:2:coder#chat -u #connect
     ```
 
     Start the A2A client with the well-known agent and implicit authentication
@@ -239,13 +241,13 @@ This demo is designed to run locally.
     Start the A2A client with the well-known agentic profile and authentication
 
     ```bash
-    pnpm cli -p did:web:example.p2pagentic.ai#a2a-coder -u #connect
+    pnpm cli -p did:web:example.p2pagentic.ai#coder -u #connect
     ```
 
     Start the A2A client with Eliza and authentication
 
     ```bash
-    pnpm cli -p did:web:example.p2pagentic.ai#a2a-eliza -u #connect
+    pnpm cli -p did:web:example.p2pagentic.ai#eliza -u #connect
     ```
 
 

@@ -23,4 +23,7 @@ zip -r function.zip \
 echo "Deploying to Lambda..."
 aws lambda update-function-code --function-name agentic-profile-a2a-example --zip-file fileb://function.zip --profile agentic
 
+echo "Restoring development node_modules..."
+pnpm i
+
 echo "Done!"

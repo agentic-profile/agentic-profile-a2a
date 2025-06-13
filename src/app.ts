@@ -56,14 +56,18 @@ app.use("/", commonRoutes({
 const a2aService1 = new A2AService( coderAgent, { taskStore: store } );
 app.use("/agents/coder", a2aService1.routes() );
 
-//==== Example 2: A2A coder agent with authentication ====
-const serviceOptions = { agentSessionResolver, taskStore: store };
-const a2aService2 = new A2AService( coderAgent, serviceOptions );
-app.use("/users/:uid/coder", a2aService2.routes() );
+//==== Example 2: Eliza agent with no authentication ====
+const a2aService2 = new A2AService( elizaAgent, { taskStore: store } );
+app.use("/agents/eliza", a2aService2.routes() );
 
-//==== Example 3: A2A agent with authentication ====
-const a2aService3 = new A2AService( elizaAgent, serviceOptions );
-app.use("/users/:uid/eliza", a2aService3.routes() );
+//==== Example 3: A2A coder agent with authentication ====
+const serviceOptions = { agentSessionResolver, taskStore: store };
+const a2aService3 = new A2AService( coderAgent, serviceOptions );
+app.use("/users/:uid/coder", a2aService3.routes() );
+
+//==== Example 4: Eliza agent with authentication ====
+const a2aService4 = new A2AService( elizaAgent, serviceOptions );
+app.use("/users/:uid/eliza", a2aService4.routes() );
 
 // Basic error handler for a2a services
 app.use( errorHandler );

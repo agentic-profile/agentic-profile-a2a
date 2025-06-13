@@ -30,27 +30,29 @@ const baseUrl = process.env.BASE_URL || `http://${hostname}`;
             did: `did:web:${hostname}`,
             services: [
                 {
-                    name: "Secure A2A coder",
+                    name: "A2A coder with Universal Authentication",
                     type: "A2A",
-                    id: "a2a-coder",
-                    url: baseUrl  // points to the one well-known agent for this server
+                    id: "coder",  // scope of DID is the server, so call this agent a "coder"
+                    url: `${baseUrl}/users/2/coder/`  // points to the one well-known agent for this server
                 },
                 {
-                    name: "A2A Eliza therapist with authentication",
+                    name: "A2A Eliza therapist with Universal Authentication",
                     type: "A2A",
-                    id: "a2a-eliza",
-                    url: `${baseUrl}/users/2/eliza/` // points to the Eliza agent which is defined later...
+                    id: "eliza", // scope of DID is the server, so call this agent an "eliza"
+                    url: baseUrl // points to the Eliza agent which is defined later...
                 }
             ],
             agents: [{
-                name: "A2A coder",
-                url: `${baseUrl}/users/2/coder/`,
-                skills: [ AGENT_CODING_SKILL ]
+                name: "A2A Eliza therapist with Universal Authentication",
+                url: `${baseUrl}/users/2/eliza/`,
+                skills: [],
+                capabilities: { stateTransitionHistory: true }
             }]
         });
         keyring.push( ...newKeys );
 
         // Coder agent with no authentication
+        // Scope of DID is the coder, so make the agent id a "chat"
         newKeys = await createAgentCardAndProfile({
             dir: join( __dirname, "..", "www", "agents", "coder" ),
             did: `did:web:${hostname}:agents:coder`,
@@ -58,32 +60,55 @@ const baseUrl = process.env.BASE_URL || `http://${hostname}`;
                 {
                     name: "Unsecured A2A coder",
                     type: "A2A",
-                    id: "a2a-coder",
+                    id: "chat",
                     url: `${baseUrl}/agents/coder/`
                 }
             ],
             agents: [{
-                name: "A2A coder with no authentication",
+                name: "Unsecured A2A coder",
                 url: `${baseUrl}/agents/coder/`,
                 skills: [ AGENT_CODING_SKILL ]
             }]
         });
         keyring.push( ...newKeys );
 
+        // Eliza agent with no authentication
+        // Scope of DID is the eliza, so make the agent id a "chat"
+        newKeys = await createAgentCardAndProfile({
+            dir: join( __dirname, "..", "www", "agents", "eliza" ),
+            did: `did:web:${hostname}:agents:eliza`,
+            services: [
+                {
+                    name: "Unsecured A2A Eliza therapist",
+                    type: "A2A",
+                    id: "chat",
+                    url: `${baseUrl}/agents/eliza/`
+                }
+            ],
+            agents: [{
+                name: "Unsecured A2A Eliza therapist",
+                url: `${baseUrl}/agents/eliza/`,
+                skills: [],
+                capabilities: { stateTransitionHistory: true }
+            }]
+        });
+        keyring.push( ...newKeys );
+
         // Coder agent with authentication
+        // Scope of DID is the coder, so make the agent id a "chat"
         newKeys = await createAgentCardAndProfile({
             dir: join( __dirname, "..", "www", "users", "2", "coder" ),
             did: `did:web:${hostname}:users:2:coder`,
             services: [
                 {
-                    name: "A2A coder with authentication",
+                    name: "A2A coder with Universal Authentication",
                     type: "A2A",
-                    id: "a2a-coder",
+                    id: "chat",
                     url: `${baseUrl}/users/2/coder/`
                 }
             ],
             agents: [{
-                name: "A2A coder with authentication",
+                name: "A2A coder with Universal Authentication",
                 url: `${baseUrl}/users/2/coder/`,
                 skills: [ AGENT_CODING_SKILL ]
             }]
@@ -91,19 +116,20 @@ const baseUrl = process.env.BASE_URL || `http://${hostname}`;
         keyring.push( ...newKeys );
 
         // Eliza agent with authentication
+        // Scope of DID is the eliza, so make the agent id a "chat"
         newKeys = await createAgentCardAndProfile({
             dir: join( __dirname, "..", "www", "users", "2", "eliza" ),
             did: `did:web:${hostname}:users:2:eliza`,
             services: [
                 {
-                    name: "A2A Eliza therapist with authentication",
+                    name: "A2A Eliza therapist with Universal Authentication",
                     type: "A2A",
-                    id: "a2a-eliza",
+                    id: "chat",
                     url: `${baseUrl}/users/2/eliza/`
                 }
             ],
             agents: [{
-                name: "A2A Eliza therapist with authentication",
+                name: "A2A Eliza therapist with Universal Authentication",
                 url: `${baseUrl}/users/2/eliza/`,
                 skills: [],
                 capabilities: { stateTransitionHistory: true }

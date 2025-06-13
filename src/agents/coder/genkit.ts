@@ -6,13 +6,14 @@
  * well as other enhancements.
  */
 
+
 import { genkit } from "genkit/beta";
-import { defineCodeFormat } from "./coder/code-format.js";
-import { gemini20Flash, googleAI } from "@genkit-ai/googleai";
+import { defineCodeFormat } from "./code-format.js";
+import { googleAI } from "@genkit-ai/googleai";
 
 export const ai = genkit({
-    plugins: [googleAI()],
-    model: gemini20Flash.withConfig({ version: "gemini-2.5-flash-preview-04-17" }),
+  plugins: [googleAI()],
+  model: googleAI.model("gemini-2.5-flash-preview-05-20"),
 });
 
 defineCodeFormat(ai);

@@ -1,4 +1,4 @@
-import { Redis } from "ioredis";
+import { Redis, RedisOptions } from "ioredis";
 
 import { UnifiedStore } from "./models.js";
 import { AgenticProfile } from "@agentic-profile/common/schema";
@@ -12,7 +12,23 @@ export class RedisStore implements UnifiedStore {
 
     constructor(redisUrl?: string) {
         console.log( "Using RedisStore", redisUrl );
-        this.redis = new Redis(redisUrl || "redis://localhost:6379");
+        if( !redisUrl )
+            redisUrl = "redis://localhost:6379";
+
+        const [ scheme, hostAndPort ] = redisUrl.split( "://" );
+        const [ host, port = 6379 ] = hostAndPort.split( ":" );
+
+        const options: RedisOptions = {
+            host,
+            port: Number(port),
+            connectTimeout: 10000
+        };
+
+        if( scheme === "rediss" )
+            options.tls = {};
+
+        console.log( "Redis options", options );
+        this.redis = new Redis(options);
     }
 
     /*

@@ -6,7 +6,7 @@
  * well as other enhancements.
  */
 
-import { GenkitBeta, z } from "genkit/beta";
+import { z, GenkitBeta } from "genkit/beta";
 
 export const CodeMessageSchema = z.object({
   files: z.array(
@@ -36,19 +36,19 @@ export class CodeMessage implements CodeMessageData {
     return this.data.postamble;
   }
 
-  /** Returns the first file's preamble. */
+  // Returns the first file's preamble.
   get preamble() {
     return this.data.files[0]?.preamble || "";
   }
-  /** Returns the first file's filename. */
+  // Returns the first file's filename.
   get filename() {
     return this.data.files[0]?.filename || "";
   }
-  /** Returns the first file's language. */
+  // Returns the first file's language.
   get language() {
     return this.data.files[0]?.language || "";
   }
-  /** Returns the first file's content. */
+  // Returns the first file's content.
   get content() {
     return this.data.files[0]?.content || "";
   }
@@ -144,7 +144,7 @@ Output code in a markdown code block using the following format:
 When generating code, always include a brief comment (using whatever comment syntax is appropriate for the languaeg) at the top that provides a short summary of what the file's purpose is, for example:
 
 \`\`\`ts src/components/habit-form.tsx
-/** HabitForm is a form for creating and editing habits to track. */
+/** HabitForm is a form for creating and editing habits to track. *
 "use client";
 // ... rest of code generated below
 \`\`\`
@@ -158,4 +158,4 @@ When generating code, always include a brief comment (using whatever comment syn
       };
     }
   );
-}
+} 
